@@ -40,8 +40,8 @@ class Game:
                     self.player.move(d)
             # Player interaction with environmnt
                 if event.key == pygame.K_e:
-                    player.interact()
+                    self.player.interact()
         # Drawing to window
-        room.draw(self.win)
-        player.draw(self.win)
+        self.room.draw(self.win)
+        self.player.draw(self.win)
         pygame.display.flip()
