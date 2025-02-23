@@ -11,25 +11,81 @@ class Player:
 
     def move(self, direction, room):
         if direction == "w":
-            if (self.ypos - self.move_speed)//7 < self.gridx:
-                if self.gridx == 0:
+            if ((self.ypos - self.move_speed)//(720/7)) < self.gridy:
+                print("changegrid")
+                if self.gridy == 0:
+                    print("worldborder")
                     pass
-                elif room.current_layout[self.gridx-1][self.gridy]==0:
+                elif room.current_layout[self.gridy-1][self.gridx]==0:
                     self.ypos -= self.move_speed
-                elif room.current_layout[self.gridx-1][self.gridy]==2:
+                    self.gridy -= 1
+                elif room.current_layout[self.gridy-1][self.gridx]==2:
                     room.change_to_file()
-                elif room.current_layout[self.gridx-1][self.gridy]==3:
+                elif room.current_layout[self.gridy-1][self.gridx]==3:
                     room.change_to_cp()
                 else:
+                    print(room.current_layout[self.gridy-1][self.gridx])
+                    print("table")
                     pass
             else:
                 self.ypos -= self.move_speed
         elif direction == "s":
-            self.ypos += self.move_speed
+            if ((self.ypos + self.move_speed)//(720/7)) > self.gridy:
+                print("changegrid")
+                if self.gridy == 6:
+                    print("worldborder")
+                    pass
+                elif room.current_layout[self.gridy+1][self.gridx]==0:
+                    self.ypos += self.move_speed
+                    self.gridy += 1
+                elif room.current_layout[self.gridy+1][self.gridx]==2:
+                    room.change_to_file()
+                elif room.current_layout[self.gridy+1][self.gridx]==3:
+                    room.change_to_cp()
+                else:
+                    print(room.current_layout[self.gridy+1][self.gridx])
+                    print("table")
+                    pass
+            else:
+                self.ypos += self.move_speed
         elif direction == "a":
-            self.xpos -= self.move_speed
+            if ((self.xpos - self.move_speed)//(720/7)) < self.gridx:
+                print("changegrid")
+                if self.gridx == 0:
+                    print("worldborder")
+                    pass
+                elif room.current_layout[self.gridy][self.gridx-1]==0:
+                    self.xpos -= self.move_speed
+                    self.gridx -= 1
+                elif room.current_layout[self.gridy][self.gridx-1]==2:
+                    room.change_to_file()
+                elif room.current_layout[self.gridy][self.gridx-1]==3:
+                    room.change_to_cp()
+                else:
+                    print(room.current_layout[self.gridy][self.gridx-1])
+                    print("table")
+                    pass
+            else:
+                self.xpos -= self.move_speed
         elif direction == "d":
-            self.xpos += self.move_speed
+            if ((self.xpos + self.move_speed)//(1280/13)) > self.gridx:
+                print("changegrid")
+                if self.gridx == 12:
+                    print("worldborder")
+                    pass
+                elif room.current_layout[self.gridy][self.gridx+1]==0:
+                    self.xpos += self.move_speed
+                    self.gridx += 1
+                elif room.current_layout[self.gridy][self.gridx+1]==2:
+                    room.change_to_file()
+                elif room.current_layout[self.gridy][self.gridx+1]==3:
+                    room.change_to_cp()
+                else:
+                    print(str(room.current_layout[self.gridy][self.gridx+1]) +" at " + str(self.gridx) + ":" + str(self.gridy))
+                    print("table")
+                    pass
+            else:
+                self.xpos += self.move_speed
         else:
             print("How did we get here?")
 

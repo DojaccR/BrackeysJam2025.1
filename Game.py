@@ -16,13 +16,12 @@ class Game:
 
     def run(self):
         while(True):
-            print("game loop")
             # Keeps track of time
             pygame.time.delay(20)
             self.tick+=1
             # When tick = 200 a day is complete and we need
             # to do checks for win and set up new day.
-            if self.tick == 600:
+            if self.tick == 6000:
                 self.tick = 0
                 if self.room.complete():
                     self.next_day(self.day + 1)
@@ -40,17 +39,18 @@ class Game:
                     if event.key == pygame.K_ESCAPE:
                         pygame.quit()
                         sys.exit()
-                    if event.key == pygame.K_w:
-                        self.player.move('w',self.room)
-                    if event.key == pygame.K_s:
-                        self.player.move('s',self.room)
-                    if event.key == pygame.K_a:
-                        self.player.move('a',self.room)
-                    if event.key == pygame.K_d:
-                        self.player.move('d',self.room)
                 # Player interaction with environmnt
                     if event.key == pygame.K_e:
                         self.player.interact()
+            key = pygame.key.get_pressed()
+            if key[pygame.K_w]:
+                self.player.move('w',self.room)
+            if key[pygame.K_s]:
+                self.player.move('s',self.room)
+            if key[pygame.K_a]:
+                self.player.move('a',self.room)
+            if key[pygame.K_d]:
+                self.player.move('d',self.room)
         # Drawing to window
             self.room.draw(self.win)
             self.player.draw(self.win)
