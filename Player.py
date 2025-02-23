@@ -23,6 +23,10 @@ class Player:
                     room.change_to_file()
                 elif room.current_layout[self.gridy-1][self.gridx]==3:
                     room.change_to_cp()
+                    self.xpos = 45
+                    self.ypos = 360
+                    self.gridx = 0
+                    self.gridy = 3
                 else:
                     print(room.current_layout[self.gridy-1][self.gridx])
                     print("table")
@@ -42,6 +46,10 @@ class Player:
                     room.change_to_file()
                 elif room.current_layout[self.gridy+1][self.gridx]==3:
                     room.change_to_cp()
+                    self.xpos = 45
+                    self.ypos = 360
+                    self.gridx = 0
+                    self.gridy = 3
                 else:
                     print(room.current_layout[self.gridy+1][self.gridx])
                     print("table")
@@ -61,6 +69,10 @@ class Player:
                     room.change_to_file()
                 elif room.current_layout[self.gridy][self.gridx-1]==3:
                     room.change_to_cp()
+                    self.xpos = 45
+                    self.ypos = 360
+                    self.gridx = 0
+                    self.gridy = 3
                 else:
                     print(room.current_layout[self.gridy][self.gridx-1])
                     print("table")
@@ -80,6 +92,10 @@ class Player:
                     room.change_to_file()
                 elif room.current_layout[self.gridy][self.gridx+1]==3:
                     room.change_to_cp()
+                    self.xpos = 45
+                    self.ypos = 360
+                    self.gridx = 0
+                    self.gridy = 3
                 else:
                     print(str(room.current_layout[self.gridy][self.gridx+1]) +" at " + str(self.gridx) + ":" + str(self.gridy))
                     print("table")
