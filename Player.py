@@ -1,15 +1,29 @@
+import pygame
+
 class Player:
-    def __inti__(self):
-        self.xpos = 0
-        self.ypos = 0
-        self.image = pygame.image.load("Assets/Player.png")
+    def __init__(self):
+        self.xpos = 45
+        self.ypos = 360
+        self.image = pygame.transform.scale(pygame.image.load("Player.png"),(160,90))
         self.gridx = 0
-        self.gridy = 0
+        self.gridy = 3
         self.move_speed = 10
 
-    def move(self, direction):
+    def move(self, direction, room):
         if direction == "w":
-            self.ypos -= self.move_speed
+            if (self.ypos - self.move_speed)//7 < self.gridx:
+                if self.gridx == 0:
+                    pass
+                elif room.current_layout[self.gridx-1][self.gridy]==0:
+                    self.ypos -= self.move_speed
+                elif room.current_layout[self.gridx-1][self.gridy]==2:
+                    room.change_to_file()
+                elif room.current_layout[self.gridx-1][self.gridy]==3:
+                    room.change_to_cp()
+                else:
+                    pass
+            else:
+                self.ypos -= self.move_speed
         elif direction == "s":
             self.ypos += self.move_speed
         elif direction == "a":
@@ -19,9 +33,8 @@ class Player:
         else:
             print("How did we get here?")
 
-    def interact(self, task_list):
-        for task in task_list.tasks:
-            if 
+    def interact(self, room):
+        room.interact(gridx, gridy)
 
     def draw(self, win):
-        win.blit(self.image, (self.xpos, self.ypos))
+        win.blit(self.image, (self.xpos-80, self.ypos-45))
