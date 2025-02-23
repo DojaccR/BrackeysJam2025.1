@@ -1,14 +1,12 @@
 import pygame
-import Maze
 from pygame.locals import *
 import asyncio
-import lock as lk
 import Game
 import time
 
 async def main():
     pygame.init()
-    win=pygame.display.set_mode((1920, 1080))
+    win=pygame.display.set_mode((1280, 720))
 
     ##TODO load resources
     mainMenu = pygame.image.load("main.png")
@@ -16,8 +14,8 @@ async def main():
     losingScreen = pygame.image.load("losescreen.png")
 
     ## TODO get coordinates of buttons
-    startButton = pygame.Rect(x1, y1, x2, y2)
-    exitButton  = pygame.Rect(x1, y1, x2, y2)
+    startButton = pygame.Rect(760, 95, 1160, 280)
+    exitButton  = pygame.Rect(811, 507, 1123, 643)
 
     clock = pygame.time.Clock()
 
@@ -44,7 +42,7 @@ async def main():
                     break
 
                 if (startButton.collidepoint(mouse_position)):    
-                    game = Game.Game(win)
+                    game = Game.Game(win, clock)
                     if (game.run()):
                         display = winningScreen
                     else:
