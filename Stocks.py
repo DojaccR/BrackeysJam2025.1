@@ -146,6 +146,10 @@ class Stocks(Task):
             bet_surface = font.render(f"Bet: ${self.bet}", True, pygame.Color('white'))
             screen.blit(bet_surface, (width // 2 + 50, height // 3))
 
+            win_condition_text = "Make $2000 to Win!"
+            win_condition_surface = font.render(win_condition_text, True, pygame.Color('yellow'))
+            screen.blit(win_condition_surface, (width // 2 + 50, height // 2+40))
+
             pygame.display.flip()
             clock.tick(30)
 
