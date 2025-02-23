@@ -41,7 +41,7 @@ class Game:
                         sys.exit()
                 # Player interaction with environmnt
                     if event.key == pygame.K_e:
-                        self.player.interact()
+                        self.player.interact(self.room)
             key = pygame.key.get_pressed()
             if key[pygame.K_w]:
                 self.player.move('w',self.room)

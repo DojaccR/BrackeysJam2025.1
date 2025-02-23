@@ -106,7 +106,7 @@ class Player:
             print("How did we get here?")
 
     def interact(self, room):
-        room.interact(gridx, gridy)
+        room.interact(self.gridx, self.gridy)
 
     def draw(self, win):
         win.blit(self.image, (self.xpos-80, self.ypos-45))

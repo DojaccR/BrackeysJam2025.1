@@ -1,9 +1,10 @@
 import pygame
+import Stocks
 
 class Room:
     def __init__(self):
         self.computer_tasks = [0,0,0,0,0] # five tasks all set to false in initialisation of class
-        self.computer_tasks_coords = [(),(),(),(),()]
+        self.computer_tasks_coords = [(9,3),(9,3),(9,3),(9,3),(9,3)]
         self.shred_tasks = [0,0,0,0,0]
         self.shred_tasks_coords = [(),(),(),(),()]
         self.sort_tasks = [0,0,0,0,0]
@@ -45,8 +46,9 @@ class Room:
         self.generate_tasks(day)
 
 
-    def interact(self, grix, gridy):
+    def interact(self, gridx, gridy):
         adjacent = [(gridx + 1, gridy),(gridx - 1, gridy),(gridx, gridy + 1),(gridx, gridy - 1)]
+        print(str(gridx)+ " " + str(gridy))
         if self.current_room == 0:
             for block in adjacent:
                 if block == adjacent:
@@ -54,7 +56,11 @@ class Room:
         elif self.current_room == 1:
             pass
         elif self.current_room == 2:
-            pass
+            for block in adjacent:
+                if block == (8,3):
+                    print("open stock")
+                    stock = Stocks.Stocks((0,0), 1000)
+                    stock.run
     
     def change_to_file(self):
         self.current_room = 1
