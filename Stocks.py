@@ -177,9 +177,6 @@ class Stocks(Task):
         self.positions = [(self.xPos, self.needlePos)]
         self.game_started = False
 
-def main():
-    test = Stocks("Stock Market", 1000)
-    test.run()
 
 if __name__ == "__main__":
     main()

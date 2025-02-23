@@ -59,8 +59,8 @@ class Room:
             for block in adjacent:
                 if block == (8,3):
                     print("open stock")
-                    stock = Stocks.Stocks((0,0), 1000)
-                    stock.run
+                    stock = Stocks.Stocks("Stock market", 1000)
+                    stock.run()
     
     def change_to_file(self):
         self.current_room = 1
